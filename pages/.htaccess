@@ -1,0 +1,8 @@
+#
+# phpBB Website Framework
+#
+
+<Files *>
+	Order Allow,Deny
+	Deny from all
+</files>
