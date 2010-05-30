@@ -1,26 +1,28 @@
-# Note: These rules have to be added to the appropriate nginx config file.
-# They are not automatically read.
+# These must be added to the proper nginx config file.
+# They are not automatically read like .htaccess files.
 location / {
+	
+	uninitialized_variable_warn off;
 
-  uninitialized_variable_warn off;
+	set $static_file /static/$request_filename/index.html;
 
-  set $static_file /static/$request_filename/index.html;
+	if ($request_method !~* ^GET$) {
+		set $static_file '';
+	}
 
-  if ($request_method !~* ^GET$) {
-    set $static_file '';
-  }
+	if ($cookie_DYNAMIC) {
+		set $static_file '';
+	}
 
-  if ($cookie_DYNAMIC) {
-    set $static_file '';
-  }
+	if (-e $request_filename) {
+		set $static_file '';
+	}
 
-  if (-e $request_filename) {
-    set $static_file '';
-  }
+	if (-f $document_root$static_file) {
+		rewrite ^(.*)$ $static_file last;
+	}
 
-  if (-f $document_root$static_file) {
-    rewrite ^(.*)$ $static_file last;
-  }
-
-  rewrite . /index.php last;
+	if (!-e $request_filename) {
+		rewrite . /index.php last;
+	}
 }
