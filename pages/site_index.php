@@ -20,6 +20,16 @@ class page
 	 */
 	public $page_title = '';
 
+  /*
+   * Should the page be cached?
+   */
+  public $cached = true;
+
+  /*
+   * Does this page accept parameters?
+   */
+  public $params = false;
+
 	/*
 	 * Main function
 	 */

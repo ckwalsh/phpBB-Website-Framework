@@ -21,13 +21,28 @@ class page
 	public $page_title = '';
 
 	/*
+	 * Should the page be cached?
+	 */
+	public $cached = true;
+
+	/*
+	 * Does this page accept parameters?
+	 */
+	public $params = false;
+
+	/*
 	 * Main function
 	 */
-	public function main()
+	public function main($params = array())
 	{
 		$this->page_tpl = 'page.html';
 		$this->page_title = 'Creating Communites right here';
 		
+		if (!empty($params))
+		{
+			define('NO_CACHE', true);
+		}
+
 		// blah
 		
 		return;

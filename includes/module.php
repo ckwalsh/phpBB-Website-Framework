@@ -66,11 +66,18 @@ class phpbb_page
 
 		include $filename;
 		$page = new page();
+
+		if (!$page->params && sizeof($params) > 0)
+		{
+			core::msg_handler(404);
+			return;
+		}
+
 		$page->main($params);
 
 		$cache_page = false;
 
-		if (!defined('NO_CACHE')
+		if ($page->cache == true
 			&& $_SERVER['REQUEST_METHOD'] == 'GET'
 			&& !isset($_COOKIE['no_cache'])
 			&& !file_exists(SITE_ROOT . 'static/' . implode('/', core::$url->url) . '/index.html')
