@@ -4,7 +4,7 @@ location / {
 	
 	uninitialized_variable_warn off;
 
-	set $static_file /static/$request_filename/index.html;
+	set $static_file /static$request_uri/index.html;
 
 	if ($request_method !~* ^GET$) {
 		set $static_file '';
