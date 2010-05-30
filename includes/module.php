@@ -35,7 +35,7 @@ class phpbb_page
 		{	 
 			// Give them the site_index if there is nothing in the urls
 			$filename = SITE_ROOT . 'pages/site_index.' . PHPEX;
-		}	 
+		}
 		elseif(sizeof($filename) > 0 && $filename[0] == 'site_index')
 		{	 
 			// Force error if they are trying to get the site_index incorrectly
@@ -59,6 +59,7 @@ class phpbb_page
 		{
 			// Can't find the page
 			core::msg_handler(404);
+			return;
 		}
 
 		$params = array_reverse($params);

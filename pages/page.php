@@ -25,8 +25,8 @@ class page
 	 */
 	public function main()
 	{
-		$this->page_tpl = 'site_index.html';
-		$this->page_title = 'Creating Communites Worldwide';
+		$this->page_tpl = 'page.html';
+		$this->page_title = 'Creating Communites right here';
 		
 		// blah
 		
