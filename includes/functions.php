@@ -205,7 +205,7 @@ class core
 			'T_ICONS_PATH'			=> core::$url->web_root . PHPBB_ROOT . phpbb::$config['icons_path'] . '/',
 			'T_RANKS_PATH'			=> core::$url->web_root . PHPBB_ROOT . phpbb::$config['ranks_path'] . '/',
 			'T_UPLOAD_PATH'			=> core::$url->web_root . PHPBB_ROOT . phpbb::$config['upload_path'] . '/',
-			'T_STYLESHEET_LINK'		=> (!phpbb::$user->theme['theme_storedb']) ? core::$url->web_root . PHPBB_ROOT . 'styles/' . phpbb::$user->theme['theme_path'] . '/theme/stylesheet.css' : append_sid(core::$url->web_root . PHPBB_ROOT . 'style.' . PHPEX, 'id=' . phpbb::$user->theme['style_id'] . '&amp;lang=' . phpbb::$user->data['user_lang'], true, phpbb::$user->session_id),
+			'T_STYLESHEET_LINK'		=> (!phpbb::$user->theme['theme_storedb']) ? core::$url->web_root . PHPBB_ROOT . 'styles/' . phpbb::$user->theme['theme_path'] . '/theme/stylesheet.css' : append_sid(core::$url->web_root . PHPBB_ROOT . 'style.' . PHPEX, 'id=' . phpbb::$user->theme['style_id'] . '&amp;lang=' . phpbb::$user->data['user_lang']),
 			'T_STYLESHEET_NAME'		=> phpbb::$user->theme['theme_name'],
 
 			'T_THEME_NAME'			=> phpbb::$user->theme['theme_path'],
@@ -295,7 +295,6 @@ class core
 		
 		(empty($config['gzip_compress'])) ? @flush() : @ob_flush();
 
-		exit;
 	}
 }
 
